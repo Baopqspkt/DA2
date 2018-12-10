@@ -44,7 +44,6 @@ Section Cross References
     uart.o(i.USART2_Config) refers to stm32f4xx_gpio.o(i.GPIO_Init) for GPIO_Init
     uart.o(i.USART2_Config) refers to stm32f4xx_usart.o(i.USART_Init) for USART_Init
     uart.o(i.USART2_Config) refers to stm32f4xx_usart.o(i.USART_Cmd) for USART_Cmd
-    uart.o(i.USART2_GetChar) refers to stm32f4xx_usart.o(i.USART_GetFlagStatus) for USART_GetFlagStatus
     uart.o(i.USART2_GetChar) refers to stm32f4xx_usart.o(i.USART_ReceiveData) for USART_ReceiveData
     uart.o(i.USART2_PutChar) refers to stm32f4xx_usart.o(i.USART_GetFlagStatus) for USART_GetFlagStatus
     uart.o(i.USART2_PutChar) refers to stm32f4xx_usart.o(i.USART_SendData) for USART_SendData
@@ -55,6 +54,7 @@ Section Cross References
     uart.o(i.USART3_Config) refers to stm32f4xx_gpio.o(i.GPIO_Init) for GPIO_Init
     uart.o(i.USART3_Config) refers to stm32f4xx_usart.o(i.USART_Init) for USART_Init
     uart.o(i.USART3_Config) refers to stm32f4xx_usart.o(i.USART_Cmd) for USART_Cmd
+    uart.o(i.USART3_GetChar) refers to stm32f4xx_usart.o(i.USART_GetFlagStatus) for USART_GetFlagStatus
     uart.o(i.USART3_GetChar) refers to stm32f4xx_usart.o(i.USART_ReceiveData) for USART_ReceiveData
     uart.o(i.USART3_PutChar) refers to stm32f4xx_usart.o(i.USART_GetFlagStatus) for USART_GetFlagStatus
     uart.o(i.USART3_PutChar) refers to stm32f4xx_usart.o(i.USART_SendData) for USART_SendData
@@ -276,8 +276,8 @@ Removing Unused input sections from the image.
     Removing uart.o(.rev16_text), (4 bytes).
     Removing uart.o(.revsh_text), (4 bytes).
     Removing uart.o(.rrx_text), (6 bytes).
-    Removing uart.o(i.USART2_GetChar), (28 bytes).
-    Removing uart.o(i.USART3_GetChar), (16 bytes).
+    Removing uart.o(i.USART2_GetChar), (16 bytes).
+    Removing uart.o(i.USART3_GetChar), (28 bytes).
     Removing uart.o(i.USART3_PutChar), (32 bytes).
     Removing uart.o(i.USART3_PutString), (22 bytes).
     Removing timer.o(.rev16_text), (4 bytes).
@@ -748,10 +748,10 @@ Image Symbol Table
     i.delay_us                               0x08000ea0   Section        0  delay.o(i.delay_us)
     i.init_GPIO                              0x08000ebc   Section        0  main.o(i.init_GPIO)
     i.main                                   0x08000f14   Section        0  main.o(i.main)
-    i.myprintf2                              0x08001010   Section        0  mylib.o(i.myprintf2)
-    x$fpl$fpinit                             0x080010cc   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x080010cc   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x080010d6   Section       24  system_stm32f4xx.o(.constdata)
+    i.myprintf2                              0x08001000   Section        0  mylib.o(i.myprintf2)
+    x$fpl$fpinit                             0x080010bc   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x080010bc   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x080010c6   Section       24  system_stm32f4xx.o(.constdata)
     .data                                    0x20000000   Section        4  delay.o(.data)
     TimingDelay                              0x20000000   Data           4  delay.o(.data)
     .data                                    0x20000004   Section       12  main.o(.data)
@@ -1004,14 +1004,14 @@ Image Symbol Table
     delay_us                                 0x08000ea1   Thumb Code    28  delay.o(i.delay_us)
     init_GPIO                                0x08000ebd   Thumb Code    76  main.o(i.init_GPIO)
     main                                     0x08000f15   Thumb Code   186  main.o(i.main)
-    myprintf2                                0x08001011   Thumb Code   188  mylib.o(i.myprintf2)
-    _fp_init                                 0x080010cd   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x080010d5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x080010d5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    AHBPrescTable                            0x080010d6   Data          16  system_stm32f4xx.o(.constdata)
-    APBPrescTable                            0x080010e6   Data           8  system_stm32f4xx.o(.constdata)
-    Region$$Table$$Base                      0x080010f0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001110   Number         0  anon$$obj.o(Region$$Table)
+    myprintf2                                0x08001001   Thumb Code   188  mylib.o(i.myprintf2)
+    _fp_init                                 0x080010bd   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x080010c5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x080010c5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    AHBPrescTable                            0x080010c6   Data          16  system_stm32f4xx.o(.constdata)
+    APBPrescTable                            0x080010d6   Data           8  system_stm32f4xx.o(.constdata)
+    Region$$Table$$Base                      0x080010e0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001100   Number         0  anon$$obj.o(Region$$Table)
     GPIO_InitStructure                       0x20000004   Data           8  main.o(.data)
     data                                     0x2000000c   Data           1  main.o(.data)
     dht                                      0x2000000d   Data           1  main.o(.data)
@@ -1029,9 +1029,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000229
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00001148, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00001138, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001110, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001100, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1149,34 +1149,34 @@ Memory Map of the image
     0x08000e88   0x08000e88   0x00000018   Code   RO            5    i.delay_ms          delay.o
     0x08000ea0   0x08000ea0   0x0000001c   Code   RO            6    i.delay_us          delay.o
     0x08000ebc   0x08000ebc   0x00000058   Code   RO          158    i.init_GPIO         main.o
-    0x08000f14   0x08000f14   0x000000fc   Code   RO          159    i.main              main.o
-    0x08001010   0x08001010   0x000000bc   Code   RO          236    i.myprintf2         mylib.o
-    0x080010cc   0x080010cc   0x0000000a   Code   RO         2390    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x080010d6   0x080010d6   0x00000018   Data   RO         2267    .constdata          system_stm32f4xx.o
-    0x080010ee   0x080010ee   0x00000002   PAD
-    0x080010f0   0x080010f0   0x00000020   Data   RO         2458    Region$$Table       anon$$obj.o
+    0x08000f14   0x08000f14   0x000000ec   Code   RO          159    i.main              main.o
+    0x08001000   0x08001000   0x000000bc   Code   RO          236    i.myprintf2         mylib.o
+    0x080010bc   0x080010bc   0x0000000a   Code   RO         2390    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x080010c6   0x080010c6   0x00000018   Data   RO         2267    .constdata          system_stm32f4xx.o
+    0x080010de   0x080010de   0x00000002   PAD
+    0x080010e0   0x080010e0   0x00000020   Data   RO         2458    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001110, Size: 0x00000038, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001100, Size: 0x00000038, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001110   0x00000004   Data   RW            7    .data               delay.o
-    0x20000004   0x08001114   0x0000000c   Data   RW          160    .data               main.o
-    0x20000010   0x08001120   0x00000011   Data   RW          239    .data               mylib.o
-    0x20000021   0x08001131   0x00000010   Data   RW         1026    .data               stm32f4xx_rcc.o
-    0x20000031   0x08001141   0x00000003   PAD
-    0x20000034   0x08001144   0x00000004   Data   RW         2268    .data               system_stm32f4xx.o
+    0x20000000   0x08001100   0x00000004   Data   RW            7    .data               delay.o
+    0x20000004   0x08001104   0x0000000c   Data   RW          160    .data               main.o
+    0x20000010   0x08001110   0x00000011   Data   RW          239    .data               mylib.o
+    0x20000021   0x08001121   0x00000010   Data   RW         1026    .data               stm32f4xx_rcc.o
+    0x20000031   0x08001131   0x00000003   PAD
+    0x20000034   0x08001134   0x00000004   Data   RW         2268    .data               system_stm32f4xx.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000038, Load base: 0x08001148, Size: 0x00000698, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000038, Load base: 0x08001138, Size: 0x00000698, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000038        -       0x00000032   Zero   RW          238    .bss                mylib.o
-    0x2000006a   0x08001148   0x00000002   PAD
+    0x2000006a   0x08001138   0x00000002   PAD
     0x2000006c        -       0x00000060   Zero   RW         2332    .bss                c_w.l(libspace.o)
-    0x200000cc   0x08001148   0x00000004   PAD
+    0x200000cc   0x08001138   0x00000004   PAD
     0x200000d0        -       0x00000200   Zero   RW         2256    HEAP                startup_stm32f407xx.o
     0x200002d0        -       0x00000400   Zero   RW         2255    STACK               startup_stm32f407xx.o
 
@@ -1191,7 +1191,7 @@ Image component sizes
        100          0          0          0          0     208073   clock.o
         76         10          0          4          0     247550   delay.o
        408         32          0          0          0       2893   dht11.o
-       348         78          0         12          0      32977   main.o
+       332         62          0         12          0      32973   main.o
        120         14          0          0          0      15660   misc.o
        236          8          0         17         50       2010   mylib.o
         64         26        392          0       1536        864   startup_stm32f407xx.o
@@ -1205,7 +1205,7 @@ Image component sizes
        326         22          0          0          0       2384   uart.o
 
     ----------------------------------------------------------------------
-      3626        370        450         56       1588     583248   Object Totals
+      3610        354        450         56       1588     583244   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          2          3          2          0   (incl. Padding)
 
@@ -1256,15 +1256,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3918        386        450         56       1688     578992   Grand Totals
-      3918        386        450         56       1688     578992   ELF Image Totals
-      3918        386        450         56          0          0   ROM Totals
+      3902        370        450         56       1688     578988   Grand Totals
+      3902        370        450         56       1688     578988   ELF Image Totals
+      3902        370        450         56          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4368 (   4.27kB)
+    Total RO  Size (Code + RO Data)                 4352 (   4.25kB)
     Total RW  Size (RW Data + ZI Data)              1744 (   1.70kB)
-    Total ROM Size (Code + RO Data + RW Data)       4424 (   4.32kB)
+    Total ROM Size (Code + RO Data + RW Data)       4408 (   4.30kB)
 
 ==============================================================================
 

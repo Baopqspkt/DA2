@@ -98,16 +98,26 @@ int main(){
 	USART2_Config();	
 	USART3_Config();	
 	DHT11_Init();
-	myprintf2("\r\n check DTH11\r\n") ;
+	myprintf2("UART2") ;
+	//myprintf3("UART3") ;
 	while(1)
 		{
-			if(dht > 5){
-				dht = 0;
-			GPIO_ToggleBits(PORTLed,Led1);
-			if(Read_TempAndHumidity ( & DHT11_DATA)==SUCCESS)
-					myprintf2("%d,%d",nd,dam);	
-			else
-					myprintf2("error");}	
+			if(dht > 5)
+				{
+					dht = 0;
+					GPIO_ToggleBits(PORTLed,Led1);
+					if(Read_TempAndHumidity ( & DHT11_DATA)==SUCCESS)
+						{
+							//myprintf3("Nhietdo.val=%d",nd);
+							//myprintf3("Doam.val=%d",dam);
+							myprintf2("%d,%d",DHT11_DATA.temp_int,dam);	
+						}
+					else
+						{
+							myprintf2("error");
+							//myprintf3("error");
+						}
+					}
 		}
 	}
 
